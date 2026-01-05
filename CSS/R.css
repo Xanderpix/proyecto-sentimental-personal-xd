@@ -1,0 +1,196 @@
+.first-line {
+    text-indent: 1.5rem;
+    color: green;
+    font-weight: bolder;
+}
+.first-line {
+    font-size: 1.2rem;
+    color: green;
+    font-weight: bold;
+}
+
+/* R.CSS
+    Tema oscuro suave y accesible para toda la página
+*/
+
+/* Variables de color (ajusta valores si lo deseas) */
+:root{
+  --bg: #0f1720;                /* fondo principal */
+  --bg-accent: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+  --surface: #111827;           /* tarjetas / superficies */
+  --muted: #9ca3af;             /* texto secundario */
+  --text: #e6eef8;              /* texto principal */
+  --accent: #60a5fa;            /* link / botones */
+  --accent-2: #7dd3fc;          /* acento secundario */
+  --border: rgba(255,255,255,0.04);
+  --glass: rgba(255,255,255,0.03);
+  --shadow: 0 6px 18px rgba(2,6,23,0.6);
+  --radius: 12px;
+  --transition: 180ms cubic-bezier(.2,.9,.3,1);
+}
+
+/* Detectar preferencia de color clara y ofrecer alternativa si la quieres */
+@media (prefers-color-scheme: light){
+  /* Si prefieres que la web siga el modo claro, comenta este bloque.
+      Si quieres forzar oscuro, elimínalo o mantenlo vacío. */
+  :root{
+     --bg: #f7fafc;
+     --surface: #ffffff;
+     --muted: #6b7280;
+     --text: #0b1220;
+     --accent: #2563eb;
+     --border: rgba(2,6,23,0.06);
+     --glass: rgba(2,6,23,0.02);
+     --shadow: 0 6px 20px rgba(2,6,23,0.08);
+  }
+}
+
+/* Reset básico y transiciones suaves */
+* { box-sizing: border-box; }
+html,body { height:100%; }
+html {
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  transition: background-color var(--transition), color var(--transition);
+}
+body{
+  margin:0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background-image: var(--bg-accent);
+  line-height:1.45;
+  -webkit-tap-highlight-color: transparent;
+  min-height:100vh;
+  padding: 1.5rem;
+}
+
+/* Contenedor central amigable */
+.container, main {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Superficies y tarjetas */
+.card, article, header, section, nav, footer {
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00)), var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+  transition: transform var(--transition), box-shadow var(--transition), background-color var(--transition);
+}
+
+/* Tipografía */
+h1,h2,h3,h4,h5,h6 {
+  color: var(--text);
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+  line-height:1.1;
+}
+p { color: var(--muted); margin:0 0 1rem 0; }
+
+/* Enlaces */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color var(--transition), text-decoration-color var(--transition);
+}
+a:hover, a:focus {
+  color: var(--accent-2);
+  text-decoration: underline;
+  outline: none;
+}
+
+/* Botones y controles */
+button, input[type="button"], .btn {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02)), rgba(0,0,0,0.06);
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 0.5rem 0.9rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition), background-color var(--transition);
+}
+button.primary, .btn-primary {
+  background: linear-gradient(180deg, rgba(96,165,250,0.15), rgba(59,130,246,0.12));
+  color: white;
+  border-color: rgba(96,165,250,0.25);
+  box-shadow: 0 6px 18px rgba(59,130,246,0.12);
+}
+button:active { transform: translateY(1px) scale(0.999); }
+button:focus { box-shadow: 0 0 0 4px rgba(96,165,250,0.12); outline: none; }
+
+/* Formularios */
+input, textarea, select {
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02)), var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0.6rem;
+  border-radius: 8px;
+  width:100%;
+}
+input:focus, textarea:focus, select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 4px 18px rgba(96,165,250,0.08);
+  outline: none;
+}
+
+/* Código y pre */
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace;
+  background: rgba(255,255,255,0.02);
+  color: var(--accent-2);
+  padding: 0.2rem 0.4rem;
+  border-radius: 6px;
+}
+pre {
+  padding: 1rem;
+  overflow:auto;
+  border: 1px solid var(--border);
+}
+
+/* Separadores y listas */
+hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
+  margin: 1.25rem 0;
+}
+ul, ol { color: var(--muted); }
+
+/* Imágenes */
+img { max-width:100%; border-radius:8px; display:block; }
+
+/* Custom scrollbar (WebKit) */
+*:not(textarea)::-webkit-scrollbar { height:10px; width:10px; }
+*:not(textarea)::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+*:not(textarea)::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Utilidades rápidas */
+.center { display:flex; align-items:center; justify-content:center; }
+.row { display:flex; gap:1rem; align-items:center; }
+.stack { display:flex; flex-direction:column; gap:0.5rem; }
+
+/* Pequeñas animaciones agradables */
+.fade-in { animation: fadeIn .28s ease both; }
+@keyframes fadeIn { from { opacity:0; transform: translateY(6px);} to { opacity:1; transform: translateY(0);} }
+
+/* Tema inverso manual: agregar data-theme="light" al <html> para forzar claro */
+:root[data-theme="light"] {
+  --bg: #f7fafc;
+  --surface: #ffffff;
+  --muted: #6b7280;
+  --text: #0b1220;
+  --accent: #2563eb;
+  --border: rgba(2,6,23,0.06);
+  --glass: rgba(2,6,23,0.02);
+  --shadow: 0 6px 20px rgba(2,6,23,0.08);
+}
